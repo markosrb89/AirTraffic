@@ -1,0 +1,31 @@
+{
+  "name": "airtraffic",
+  "version": "1.0.0",
+  "description": "Flying airplanes based on current location of user",
+  "main": "server.js",
+  "scripts": {
+    "client": "npm start --prefix client",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markosrb89/AirTraffic.git"
+  },
+  "author": "Marko Krtolica",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markosrb89/AirTraffic/issues"
+  },
+  "homepage": "https://github.com/markosrb89/AirTraffic#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "concurrently": "^3.5.1",
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.1"
+  }
+}
