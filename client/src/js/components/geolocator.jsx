@@ -19,7 +19,7 @@ class Geolocator extends Component {
 
     getCurrentPosition() {
         return new Promise((resolve, reject) => {
-            this.navigator.geolocation.getCurrentPosition((position) => {
+            this.navigator.geolocation.getCurrentPosition(position => {
                 const coordinates = position.coords;
                 resolve({ coordinates });
             }, () => { reject('We could not get your location.'); });

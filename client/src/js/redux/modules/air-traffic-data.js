@@ -48,6 +48,7 @@ export function connectAndFetchData(coordinates) {
             const socket = socketIOClient(endpoint);
             socket.emit("event", { coordinates });            
             socket.on("FromAPI", data => {
+                // console.log(data);
                 dispatch(connectAndFetchDataSuccess(data));
             });
         }

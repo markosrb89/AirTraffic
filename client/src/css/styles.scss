@@ -1,26 +1,83 @@
+@import "./spinner";
+
 body {
-    background-color: #c7c7c7;
+    font-family: 'Questrial', sans-serif;
+    background-color: #dedfe0;
     color: #464343;
+    margin: 0px;
+    padding: 0px;
 }
 
 .wrapper {
-    .loading-spinner {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-color: rgb(235, 234, 236);
-        color: #166b47;
-        z-index: 999999999;
-        transition: all .3s ease;
+    width: 100%;
+    height: auto;
+
+    &:first-child {
+        text-align: center;
+
+        h1 {
+            font-weight: 700;
+            font-size: 40px;   
+        }
+
+        p {
+            font-size: 22px;
+        }
+    }
+
+    .airplain-details-wrapper {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-row-gap: 20px;
+        grid-column-gap: 20px;
+        margin: 50px;
+     
+        .airplane {
+            background-color: #f7f7f7;
+            border-radius: 3px;
+            box-shadow: 1px 0px 8px 1px;
+            text-align: center;
+            cursor: pointer;
+        }
         
-        .spinner-icon {
-            position: absolute;
-            font-size: 70px;
-            top: calc(50% - 0.6em);
-            left: calc(50% - 0.6em);
-            z-index: 999999999;
+        .airplane-details {
+            grid-column-start: 3;
+            grid-column-end: 5;
+            background-color: #f7f7f7;
+            border-radius: 3px;
+            box-shadow: 1px 0px 8px 1px;
+            text-align: center;
+            padding: 20px;
+
+            .back-button {
+                cursor: pointer;
+                background-color: #039db1;
+                color: #fff;
+                padding: 10px;
+                width: 15%;
+                border-radius: 3px;
+                position: relative;
+                top: 20px;
+                right: 21px;
+                
+                &:hover {
+                    background-color: #00a6bc;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1150px) {
+    .wrapper {
+        margin: 50px auto;
+        width: 50%;
+        
+        .airplain-details-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-row-gap: 20px;
+            grid-column-gap: 20px;
         }
     }
 }

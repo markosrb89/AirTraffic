@@ -11,25 +11,26 @@ const io = socketIo(server);
 
 io.on("connection", socket => {
     console.log("Client connected"),
-        setInterval(() => getApiAndEmit(socket), 10000);
-
+    setInterval(() => getApiAndEmit(socket), 10000);
     socket.on("disconnect", () => console.log("Client disconnected"));
 });
 
 const getApiAndEmit = async socket => {
     try {
         let latitude, longitude;
-
-        socket.on("event", (coordinates) => {
+        socket.on("event", coordinates => {
+            console.log(coordinates);
             latitude = coordinates.latitude;
             longitude = coordinates.longitude;
         });
 
+        // const res = await axios.get(
+        //     `http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?lat=${latitude}&lng=${longitude}&fDstL=0&fDstU=100&Mlat=true&Alt=0`
+        // );
         const res = await axios.get(
-            `http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?lat=${latitude}&lng=${longitude}&fDstL=0&fDstU=100&Mlat=true&Alt=0`
+            `http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?lat=${latitude}&lng=${longitude}&fDstL=0&fDstU=100`
         );
-        console.log(res);
-
+        console.log(res.data)
         socket.emit("FromAPI", res.data);
 
     } catch (error) {

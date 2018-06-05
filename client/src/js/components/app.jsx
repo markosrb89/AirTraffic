@@ -23,7 +23,6 @@ class App extends Component {
             .then((geolocation) => {
                 const latitude = geolocation.coordinates.latitude;
                 const longitude = geolocation.coordinates.longitude;
-
                 dispatch(setUserGeolocation({ latitude, longitude }))
                 this.createConnection();
             })
@@ -66,10 +65,16 @@ class App extends Component {
 
     render() {
         const { airTraffic } = this.props;
-        
+
         return (
             <div className="wrapper">
-                {airTraffic.coordinates ? this.renderData() : null}
+                <div>
+                    <h1>Air Traffic</h1>
+                    <p>List of airplanes based on your geolocation</p>
+                </div>
+                <div className="airplain-details-wrapper">
+                    {airTraffic.coordinates ? this.renderData() : null}
+                </div>
             </div>
         );
     }
